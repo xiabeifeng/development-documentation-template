@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<!-- saved from url=(0034)http://mp.weixin.qq.com/wiki/home/ -->
-<html lang="zh-cn" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>微信公众平台开发者文档</title>
+<html lang="zh-cn" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="./js/jquery-1.12.2.js"></script>
+<script type="text/javascript">
+	$.getJSON("./config/config.json", function(data){
+		$('title').html(data.title);
+		$('#favicon').attr('href', './image/'+data.favicon);
+	}); 
+</script>
+<title></title>
 <meta name="generator" content="MediaWiki 1.17.0">
-<link rel="shortcut icon" href="http://mp.weixin.qq.com/wiki/static/assets/b6e57135e9c7167976dba80b3b09b546.jpg">
-<link rel="search" type="application/opensearchdescription+xml" href="http://mp.weixin.qq.com/wiki/7/62453c80507e836458b441eae4358bdf.html" title="微信公众平台开发者文档 (zh-cn)">
-<link rel="alternate" type="application/atom+xml" title="微信公众平台开发者文档的Atom订阅" href="http://mp.weixin.qq.com/wiki/0/594277f21545345653eb965322ac4b04.html">
+<meta name="keywords" content="xiabeifeng/development-documentation-template">
+<meta name="description" content="xiabeifeng/development-documentation-template">
+<link id="favicon" rel="shortcut icon" href="">
 <link rel="stylesheet" href="./css/5598782dcaa8170e02cde9595d1dd42e.css">
-<meta name="keywords" content="微信公众平台开发者文档,微信小店接口,设备功能接口,Weixin JS接口,分组管理接口"><meta name="description" content="公众平台是为微信用户提供服务的平台，而公众平台开发接口则是提供服务的基础，开发者在公众平台网站中创建公众号、获取接口权限后，可以通过阅读本接口文档来帮助开发。"><meta name="ResourceLoaderDynamicStyles" content="">
-<!--[if lt IE 7]><style type="text/css">body{behavior:url("/wiki/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<!--[if lt IE 7]>
+	<style type="text/css">body{behavior:url("/wiki/skins/vector/csshover.min.htc")}</style>
+<![endif]-->
+</head>
 <body class="mediawiki ltr ns-0 ns-subject page-首页 skin-vector">
 		
 <!--网站头部-->
