@@ -1,3 +1,3 @@
-# develop-document-template
+# development-documentation-template
 
-A concise beautiful develop document template
+A concise beautiful development documentation template
