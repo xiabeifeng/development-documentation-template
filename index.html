@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://mp.weixin.qq.com/wiki/home/ -->
+<html lang="zh-cn" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>微信公众平台开发者文档</title>
+<meta name="generator" content="MediaWiki 1.17.0">
+<link rel="shortcut icon" href="http://mp.weixin.qq.com/wiki/static/assets/b6e57135e9c7167976dba80b3b09b546.jpg">
+<link rel="search" type="application/opensearchdescription+xml" href="http://mp.weixin.qq.com/wiki/7/62453c80507e836458b441eae4358bdf.html" title="微信公众平台开发者文档 (zh-cn)">
+<link rel="alternate" type="application/atom+xml" title="微信公众平台开发者文档的Atom订阅" href="http://mp.weixin.qq.com/wiki/0/594277f21545345653eb965322ac4b04.html">
+<link rel="stylesheet" href="./微信公众平台开发者文档_files/5598782dcaa8170e02cde9595d1dd42e.css">
+<meta name="keywords" content="微信公众平台开发者文档,微信小店接口,设备功能接口,Weixin JS接口,分组管理接口"><meta name="description" content="公众平台是为微信用户提供服务的平台，而公众平台开发接口则是提供服务的基础，开发者在公众平台网站中创建公众号、获取接口权限后，可以通过阅读本接口文档来帮助开发。"><meta name="ResourceLoaderDynamicStyles" content="">
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/wiki/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr ns-0 ns-subject page-首页 skin-vector">
+		
+<!--网站头部-->
+<script type="text/javascript" src="./微信公众平台开发者文档_files/021402488e80774f4bae632d50abd818.js"></script>
+<script>
+	function parseURL(){
+		var res = {}, search = location.search;
+		if (search.indexOf("?") != 0){
+			return res;
+		}
+		search = search.substr(1).split("&");
+		for (var i = 0; i < search.length; ++i){
+			var 
+				item = search[i],
+				idx = item.indexOf("="),
+				k = item.substr(0, idx),
+				v = item.substr(idx+1);
+			res[k] = v;
+		}
+		return res;
+	}
+
+	var params = parseURL();
+	$(function(){
+		$(".portal").each(function(){
+			var portal = $(this), as = portal.find('a');
+
+			as.each(function(){
+				var a = $(this), title = a.html();
+
+				if (decodeURIComponent(title) == decodeURIComponent(params['title'])){
+					portal.addClass("active").find(".body").show();
+					a.addClass("selected");
+				}
+			});
+		})
+	});
+</script>
+<div class="headWrap">
+	<div class="header" id="header">
+		<div class="inner">
+            <a class="logo" href="http://mp.weixin.qq.com/wiki/home/index.html"><img src="./微信公众平台开发者文档_files/dc5de672083b2ec495408b00b96c9aab.png" alt="微信公众平台开发者文档"></a>
+		</div>
+	</div>
+</div>		
+
+
+<script type="text/javascript" src="./微信公众平台开发者文档_files/2ef2bdf6ac1839ee639cb15463231282.js"></script>
+<!--[if IE 6]>
+<style type="text/css">
+html{background-image:url(about:blank);background-attachment:fixed;}
+#content{overflow-x:hidden;}
+.bottomnav{position:absolute;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-30));}
+</style>
+<![endif]-->
+<!--网站头部-->
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div class="mainwrapper">
+			<div class="inner">
+				<!-- panel -->
+				<div id="mw-panel" class="noprint">
+					<!-- 
+						<div id="p-logo"><a style="background-image: url(/wiki/skins/common/images/logo.jpg);" href="../3/d205351634ce4513639316e381114043.html"  title="访问首页"></a></div>
+					
+					<form class="searchform">
+						<input type="text"   name="search" placeholder="搜索关键字 [alt-s]" accesskey="s" class="searchform_text"/>
+						<input type="submit" name="fulltext" value="搜索" title="搜索该文字的页面" class="searchform_btn"/>
+					</form>
+					 -->
+					
+<!-- 开始前必读 -->
+<div class="portal" id="p-.E5.BC.80.E5.A7.8B.E5.89.8D.E5.BF.85.E8.AF.BB" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>开始前必读</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E6.9B.B4.E6.96.B0.E6.97.A5.E5.BF.97"><a href="http://mp.weixin.qq.com/wiki/0/4c93e31f953f24a42b921d2ae8d4e5e0.html">更新日志</a></li>
+					<li id="n-.E5.BC.80.E5.8F.91.E8.80.85.E8.A7.84.E8.8C.83"><a href="http://mp.weixin.qq.com/wiki/16/52e198333f5c127ddd5c45e875191b14.html">开发者规范</a></li>
+					<li id="n-.E5.85.AC.E4.BC.97.E5.8F.B7.E6.8E.A5.E5.8F.A3.E6.9D.83.E9.99.90.E8.AF.B4.E6.98.8E"><a href="http://mp.weixin.qq.com/wiki/13/8d4957b72037e3308a0ca1b21f25ae8d.html">公众号接口权限说明</a></li>
+					<li id="n-.E6.8E.A5.E5.8F.A3.E9.A2.91.E7.8E.87.E9.99.90.E5.88.B6.E8.AF.B4.E6.98.8E"><a href="http://mp.weixin.qq.com/wiki/7/85eff372c164ddc66c47777dc972279f.html">接口频率限制说明</a></li>
+					<li id="n-.E6.8E.A5.E5.8F.A3.E8.BF.94.E5.9B.9E.E7.A0.81.E8.AF.B4.E6.98.8E"><a href="http://mp.weixin.qq.com/wiki/10/6380dc743053a91c544ffd2b7c959166.html">接口返回码说明</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /开始前必读 -->
+
+<!-- 开始开发 -->
+<div class="portal" id="p-.E5.BC.80.E5.A7.8B.E5.BC.80.E5.8F.91" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>开始开发</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E6.8E.A5.E5.85.A5.E6.8C.87.E5.8D.97"><a href="http://mp.weixin.qq.com/wiki/8/f9a0b8382e0b77d87b3bcc1ce6fbc104.html">接入指南</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E6.8E.A5.E5.8F.A3.E8.B0.83.E7.94.A8.E5.87.AD.E6.8D.AE"><a href="http://mp.weixin.qq.com/wiki/14/9f9c82c1af308e3b14ba9b973f99a8ba.html">获取接口调用凭据</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E5.BE.AE.E4.BF.A1.E6.9C.8D.E5.8A.A1.E5.99.A8IP.E5.9C.B0.E5.9D.80"><a href="http://mp.weixin.qq.com/wiki/4/41ef0843d6e108cf6b5649480207561c.html">获取微信服务器IP地址</a></li>
+					<li id="n-.E6.8A.A5.E8.AD.A6.E6.8E.92.E6.9F.A5.E6.8C.87.E5.BC.95"><a href="http://mp.weixin.qq.com/wiki/7/c478375fae59150b26def82ec061f43b.html">报警排查指引</a></li>
+					<li id="n-.E6.8E.A5.E5.8F.A3.E6.B5.8B.E8.AF.95.E5.8F.B7.E7.94.B3.E8.AF.B7"><a href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login">接口测试号申请</a></li>
+					<li id="n-.E6.8E.A5.E5.8F.A3.E5.9C.A8.E7.BA.BF.E8.B0.83.E8.AF.95"><a href="http://mp.weixin.qq.com/debug/">接口在线调试</a></li>
+					<li id="n-.E5.B8.B8.E8.A7.81.E9.97.AE.E9.A2.98"><a href="http://mp.weixin.qq.com/qa">常见问题</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /开始开发 -->
+
+<!-- 自定义菜单 -->
+<div class="portal" id="p-.E8.87.AA.E5.AE.9A.E4.B9.89.E8.8F.9C.E5.8D.95" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>自定义菜单</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E8.87.AA.E5.AE.9A.E4.B9.89.E8.8F.9C.E5.8D.95.E5.88.9B.E5.BB.BA.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html">自定义菜单创建接口</a></li>
+					<li id="n-.E8.87.AA.E5.AE.9A.E4.B9.89.E8.8F.9C.E5.8D.95.E6.9F.A5.E8.AF.A2.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/5/f287d1a5b78a35a8884326312ac3e4ed.html">自定义菜单查询接口</a></li>
+					<li id="n-.E8.87.AA.E5.AE.9A.E4.B9.89.E8.8F.9C.E5.8D.95.E5.88.A0.E9.99.A4.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/3/de21624f2d0d3dafde085dafaa226743.html">自定义菜单删除接口</a></li>
+					<li id="n-.E8.87.AA.E5.AE.9A.E4.B9.89.E8.8F.9C.E5.8D.95.E4.BA.8B.E4.BB.B6.E6.8E.A8.E9.80.81"><a href="http://mp.weixin.qq.com/wiki/19/a037750e2df0261ab0a84899d16abd33.html">自定义菜单事件推送</a></li>
+					<li id="n-.E4.B8.AA.E6.80.A7.E5.8C.96.E8.8F.9C.E5.8D.95.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/0/c48ccd12b69ae023159b4bfaa7c39c20.html">个性化菜单接口</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E5.85.AC.E4.BC.97.E5.8F.B7.E7.9A.84.E8.8F.9C.E5.8D.95.E9.85.8D.E7.BD.AE"><a href="http://mp.weixin.qq.com/wiki/14/293d0cb8de95e916d1216a33fcb81fd6.html">获取公众号的菜单配置</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /自定义菜单 -->
+
+<!-- 消息管理 -->
+<div class="portal" id="p-.E6.B6.88.E6.81.AF.E7.AE.A1.E7.90.86" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>消息管理</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E6.8E.A5.E6.94.B6.E6.B6.88.E6.81.AF-.E6.8E.A5.E6.94.B6.E6.99.AE.E9.80.9A.E6.B6.88.E6.81.AF"><a href="http://mp.weixin.qq.com/wiki/17/f298879f8fb29ab98b2f2971d42552fd.html">接收消息-接收普通消息</a></li>
+					<li id="n-.E6.8E.A5.E6.94.B6.E6.B6.88.E6.81.AF-.E6.8E.A5.E6.94.B6.E4.BA.8B.E4.BB.B6.E6.8E.A8.E9.80.81"><a href="http://mp.weixin.qq.com/wiki/7/9f89d962eba4c5924ed95b513ba69d9b.html">接收消息-接收事件推送</a></li>
+					<li id="n-.E5.8F.91.E9.80.81.E6.B6.88.E6.81.AF-.E8.A2.AB.E5.8A.A8.E5.9B.9E.E5.A4.8D.E6.B6.88.E6.81.AF"><a href="http://mp.weixin.qq.com/wiki/1/6239b44c206cab9145b1d52c67e6c551.html">发送消息-被动回复消息</a></li>
+					<li id="n-.E5.8F.91.E9.80.81.E6.B6.88.E6.81.AF-.E8.A2.AB.E5.8A.A8.E5.9B.9E.E5.A4.8D.E6.97.B6.E7.9A.84.E5.8A.A0.E8.A7.A3.E5.AF.86"><a href="http://mp.weixin.qq.com/wiki/14/70e73cedf9fd958d2e23264ba9333ad2.html">发送消息-被动回复时的加解密</a></li>
+					<li id="n-.E5.8F.91.E9.80.81.E6.B6.88.E6.81.AF-.E5.AE.A2.E6.9C.8D.E6.B6.88.E6.81.AF"><a href="http://mp.weixin.qq.com/wiki/11/c88c270ae8935291626538f9c64bd123.html">发送消息-客服消息</a></li>
+					<li id="n-.E5.8F.91.E9.80.81.E6.B6.88.E6.81.AF-.E7.BE.A4.E5.8F.91.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/15/40b6865b893947b764e2de8e4a1fb55f.html">发送消息-群发接口</a></li>
+					<li id="n-.E5.8F.91.E9.80.81.E6.B6.88.E6.81.AF-.E6.A8.A1.E6.9D.BF.E6.B6.88.E6.81.AF.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/5/6dde9eaa909f83354e0094dc3ad99e05.html">发送消息-模板消息接口</a></li>
+					<li id="n-.E5.8F.91.E9.80.81.E6.B6.88.E6.81.AF-.E6.A8.A1.E6.9D.BF.E6.B6.88.E6.81.AF.E8.BF.90.E8.90.A5.E8.A7.84.E8.8C.83"><a href="http://mp.weixin.qq.com/wiki/18/8ecd0dfc9acafb2ed86ac3ae8f7c69aa.html">发送消息-模板消息运营规范</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E5.85.AC.E4.BC.97.E5.8F.B7.E8.87.AA.E5.8A.A8.E5.9B.9E.E5.A4.8D.E9.85.8D.E7.BD.AE"><a href="http://mp.weixin.qq.com/wiki/8/806878e1fc2b9e9aa618ae33896b04c4.html">获取公众号自动回复配置</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /消息管理 -->
+
+<!-- 微信网页开发 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E7.BD.91.E9.A1.B5.E5.BC.80.E5.8F.91" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信网页开发</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E5.BE.AE.E4.BF.A1.E7.BD.91.E9.A1.B5.E6.8E.88.E6.9D.83"><a href="http://mp.weixin.qq.com/wiki/4/9ac2e7b1f1d22e9e57260f6553822520.html">微信网页授权</a></li>
+					<li id="n-.E5.BE.AE.E4.BF.A1.E7.BD.91.E9.A1.B5.E5.BC.80.E5.8F.91.E6.A0.B7.E5.BC.8F.E5.BA.93"><a href="http://mp.weixin.qq.com/wiki/2/ae9782fb42e47ad79eb7b361c2149d16.html">微信网页开发样式库</a></li>
+					<li id="n-.E5.BE.AE.E4.BF.A1JS-SDK"><a href="http://mp.weixin.qq.com/wiki/11/74ad127cc054f6b80759c40f77ec03db.html">微信JS-SDK</a></li>
+					<li id="n-.E5.BE.AE.E4.BF.A1Web.E5.BC.80.E5.8F.91.E8.80.85.E5.B7.A5.E5.85.B7"><a href="http://mp.weixin.qq.com/wiki/10/e5f772f4521da17fa0d7304f68b97d7e.html">微信Web开发者工具</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信网页开发 -->
+
+<!-- 素材管理 -->
+<div class="portal" id="p-.E7.B4.A0.E6.9D.90.E7.AE.A1.E7.90.86" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>素材管理</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E6.96.B0.E5.A2.9E.E4.B8.B4.E6.97.B6.E7.B4.A0.E6.9D.90"><a href="http://mp.weixin.qq.com/wiki/15/2d353966323806a202cd2deaafe8e557.html">新增临时素材</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E4.B8.B4.E6.97.B6.E7.B4.A0.E6.9D.90"><a href="http://mp.weixin.qq.com/wiki/9/677a85e3f3849af35de54bb5516c2521.html">获取临时素材</a></li>
+					<li id="n-.E6.96.B0.E5.A2.9E.E6.B0.B8.E4.B9.85.E7.B4.A0.E6.9D.90"><a href="http://mp.weixin.qq.com/wiki/10/10ea5a44870f53d79449290dfd43d006.html">新增永久素材</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E6.B0.B8.E4.B9.85.E7.B4.A0.E6.9D.90"><a href="http://mp.weixin.qq.com/wiki/12/3c12fac7c14cb4d0e0d4fe2fbc87b638.html">获取永久素材</a></li>
+					<li id="n-.E5.88.A0.E9.99.A4.E6.B0.B8.E4.B9.85.E7.B4.A0.E6.9D.90"><a href="http://mp.weixin.qq.com/wiki/7/2212203f4e17253b9aef77dc788f5337.html">删除永久素材</a></li>
+					<li id="n-.E4.BF.AE.E6.94.B9.E6.B0.B8.E4.B9.85.E5.9B.BE.E6.96.87.E7.B4.A0.E6.9D.90"><a href="http://mp.weixin.qq.com/wiki/10/c7bad9a463db20ff8ccefeedeef51f9e.html">修改永久图文素材</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E7.B4.A0.E6.9D.90.E6.80.BB.E6.95.B0"><a href="http://mp.weixin.qq.com/wiki/5/a641fd7b5db7a6a946ebebe2ac166885.html">获取素材总数</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E7.B4.A0.E6.9D.90.E5.88.97.E8.A1.A8"><a href="http://mp.weixin.qq.com/wiki/15/8386c11b7bc4cdd1499c572bfe2e95b3.html">获取素材列表</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /素材管理 -->
+
+<!-- 用户管理 -->
+<div class="portal" id="p-.E7.94.A8.E6.88.B7.E7.AE.A1.E7.90.86" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>用户管理</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E7.94.A8.E6.88.B7.E5.88.86.E7.BB.84.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/8/d6d33cf60bce2a2e4fb10a21be9591b8.html">用户分组管理</a></li>
+					<li id="n-.E8.AE.BE.E7.BD.AE.E7.94.A8.E6.88.B7.E5.A4.87.E6.B3.A8.E5.90.8D"><a href="http://mp.weixin.qq.com/wiki/16/528098c4a6a87b05120a7665c8db0460.html">设置用户备注名</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E7.94.A8.E6.88.B7.E5.9F.BA.E6.9C.AC.E4.BF.A1.E6.81.AF.28UnionID.E6.9C.BA.E5.88.B6.29"><a href="http://mp.weixin.qq.com/wiki/1/8a5ce6257f1d3b2afb20f83e72b72ce9.html">获取用户基本信息(UnionID机制)</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E7.94.A8.E6.88.B7.E5.88.97.E8.A1.A8"><a href="http://mp.weixin.qq.com/wiki/12/54773ff6da7b8bdc95b7d2667d84b1d4.html">获取用户列表</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E7.94.A8.E6.88.B7.E5.9C.B0.E7.90.86.E4.BD.8D.E7.BD.AE"><a href="http://mp.weixin.qq.com/wiki/4/0bd25e04332eccf83bc2e71df9d3e860.html">获取用户地理位置</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /用户管理 -->
+
+<!-- 帐号管理 -->
+<div class="portal" id="p-.E5.B8.90.E5.8F.B7.E7.AE.A1.E7.90.86" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>帐号管理</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E7.94.9F.E6.88.90.E5.B8.A6.E5.8F.82.E6.95.B0.E7.9A.84.E4.BA.8C.E7.BB.B4.E7.A0.81"><a href="http://mp.weixin.qq.com/wiki/18/167e7d94df85d8389df6c94a7a8f78ba.html">生成带参数的二维码</a></li>
+					<li id="n-.E9.95.BF.E9.93.BE.E6.8E.A5.E8.BD.AC.E7.9F.AD.E9.93.BE.E6.8E.A5.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/6/856aaeb492026466277ea39233dc23ee.html">长链接转短链接接口</a></li>
+					<li id="n-.E5.BE.AE.E4.BF.A1.E8.AE.A4.E8.AF.81.E4.BA.8B.E4.BB.B6.E6.8E.A8.E9.80.81"><a href="http://mp.weixin.qq.com/wiki/10/2adfb2f10828e87aa1e5c3ef83b17906.html">微信认证事件推送</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /帐号管理 -->
+
+<!-- 数据统计 -->
+<div class="portal" id="p-.E6.95.B0.E6.8D.AE.E7.BB.9F.E8.AE.A1" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>数据统计</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E7.94.A8.E6.88.B7.E5.88.86.E6.9E.90.E6.95.B0.E6.8D.AE.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/15/88726a421bfc54654a3095821c3ca3bb.html">用户分析数据接口</a></li>
+					<li id="n-.E5.9B.BE.E6.96.87.E5.88.86.E6.9E.90.E6.95.B0.E6.8D.AE.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/9/d347c6ddb6f86ab11ec3b41c2729c8d9.html">图文分析数据接口</a></li>
+					<li id="n-.E6.B6.88.E6.81.AF.E5.88.86.E6.9E.90.E6.95.B0.E6.8D.AE.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/10/b29e8ca8bf1b0dce033ccb70273f90fa.html">消息分析数据接口</a></li>
+					<li id="n-.E6.8E.A5.E5.8F.A3.E5.88.86.E6.9E.90.E6.95.B0.E6.8D.AE.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/17/252a976f20bd3062af3f03a45f30cff9.html">接口分析数据接口</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /数据统计 -->
+
+<!-- 微信小店 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E5.B0.8F.E5.BA.97" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信小店</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E5.BE.AE.E4.BF.A1.E5.B0.8F.E5.BA.97.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/6/ae98ac4a7219405153cedc9dddccacca.html">微信小店接口</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信小店 -->
+
+<!-- 微信卡券 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E5.8D.A1.E5.88.B8" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信卡券</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E5.BE.AE.E4.BF.A1.E5.8D.A1.E5.88.B8.E6.8E.A5.E5.8F.A3.E8.AF.B4.E6.98.8E"><a href="http://mp.weixin.qq.com/wiki/10/597cb57750f375a4b37e2536fd3331ea.html">微信卡券接口说明</a></li>
+					<li id="n-.E5.88.9B.E5.BB.BA.E5.8D.A1.E5.88.B8"><a href="http://mp.weixin.qq.com/wiki/15/e33671f4ef511b77755142b37502928f.html">创建卡券</a></li>
+					<li id="n-.E6.8A.95.E6.94.BE.E5.8D.A1.E5.88.B8"><a href="http://mp.weixin.qq.com/wiki/5/f942979ef2f0d313d4d36e3a26766a3d.html">投放卡券</a></li>
+					<li id="n-.E6.A0.B8.E9.94.80.E5.8D.A1.E5.88.B8"><a href="http://mp.weixin.qq.com/wiki/15/bdfd0c3c6c3b0629e8a425936a973d8b.html">核销卡券</a></li>
+					<li id="n-.E7.AE.A1.E7.90.86.E5.8D.A1.E5.88.B8"><a href="http://mp.weixin.qq.com/wiki/14/8dd77aeaee85f922db5f8aa6386d385e.html">管理卡券</a></li>
+					<li id="n-.E5.8D.A1.E5.88.B8.E4.BA.8B.E4.BB.B6.E6.8E.A8.E9.80.81"><a href="http://mp.weixin.qq.com/wiki/16/28b34ee91675a04cb24853768debded4.html">卡券事件推送</a></li>
+					<li id="n-.E6.9C.8B.E5.8F.8B.E7.9A.84.E5.88.B8.E4.B8.93.E5.8C.BA"><a href="http://mp.weixin.qq.com/wiki/10/333958907c5aae0581e93a24f2df8562.html">朋友的券专区</a></li>
+					<li id="n-.E4.BC.9A.E5.91.98.E5.8D.A1.E4.B8.93.E5.8C.BA"><a href="http://mp.weixin.qq.com/wiki/15/de148cc4b5190c80002eaf4f6f26c717.html">会员卡专区</a></li>
+					<li id="n-.E7.89.B9.E6.AE.8A.E7.A5.A8.E5.88.B8"><a href="http://mp.weixin.qq.com/wiki/11/a42da6431597edff7caeaf5d33fac37b.html">特殊票券</a></li>
+					<li id="n-.E7.AC.AC.E4.B8.89.E6.96.B9.E4.BB.A3.E5.88.B6.E4.B8.93.E5.8C.BA"><a href="http://mp.weixin.qq.com/wiki/13/a1b2bedbca3990108195f13bd7e27401.html">第三方代制专区</a></li>
+					<li id="n-.E5.8D.A1.E5.88.B8.E9.94.99.E8.AF.AF.E7.A0.81"><a href="http://mp.weixin.qq.com/wiki/7/981e7a73e2bca37a3d1c83f071be6947.html">卡券错误码</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信卡券 -->
+
+<!-- 微信门店 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E9.97.A8.E5.BA.97" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信门店</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E5.BE.AE.E4.BF.A1.E9.97.A8.E5.BA.97.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/11/081986f089826bf94393bef9bf287b8b.html">微信门店接口</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信门店 -->
+
+<!-- 微信智能接口 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E6.99.BA.E8.83.BD.E6.8E.A5.E5.8F.A3" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信智能接口</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E8.AF.AD.E4.B9.89.E7.90.86.E8.A7.A3.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/10/65eb7a43f078cc609cf08dae6805f4a6.html">语义理解接口</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信智能接口 -->
+
+<!-- 微信设备功能 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E8.AE.BE.E5.A4.87.E5.8A.9F.E8.83.BD" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信设备功能</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E8.AE.BE.E5.A4.87.E5.8A.9F.E8.83.BD.E4.BB.8B.E7.BB.8D"><a href="http://mp.weixin.qq.com/wiki/2/77400d13dc7fca83181bc9806d55b6ce.html">设备功能介绍</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信设备功能 -->
+
+<!-- 微信多客服功能 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E5.A4.9A.E5.AE.A2.E6.9C.8D.E5.8A.9F.E8.83.BD" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信多客服功能</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E5.B0.86.E6.B6.88.E6.81.AF.E8.BD.AC.E5.8F.91.E5.88.B0.E5.A4.9A.E5.AE.A2.E6.9C.8D"><a href="http://mp.weixin.qq.com/wiki/11/f0e34a15cec66fefb28cf1c0388f68ab.html">将消息转发到多客服</a></li>
+					<li id="n-.E5.AE.A2.E6.9C.8D.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/18/749901f4e123170fb8a4d447ae6040ba.html">客服管理</a></li>
+					<li id="n-.E5.A4.9A.E5.AE.A2.E6.9C.8D.E4.BC.9A.E8.AF.9D.E6.8E.A7.E5.88.B6"><a href="http://mp.weixin.qq.com/wiki/4/4b256cfb246b22ad020e07cf8a61a738.html">多客服会话控制</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E5.AE.A2.E6.9C.8D.E8.81.8A.E5.A4.A9.E8.AE.B0.E5.BD.95"><a href="http://mp.weixin.qq.com/wiki/3/178d2982bd590adf33fc03cf6cf45b33.html">获取客服聊天记录</a></li>
+					<li id="n-PC.E5.AE.A2.E6.88.B7.E7.AB.AF.E8.87.AA.E5.AE.9A.E4.B9.89.E6.8F.92.E4.BB.B6.E6.8E.A5.E5.8F.A3"><a href="http://mp.weixin.qq.com/wiki/8/3634566e351f497f508c7b9d04636724.html">PC客户端自定义插件接口</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信多客服功能 -->
+
+<!-- 微信摇一摇周边 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E6.91.87.E4.B8.80.E6.91.87.E5.91.A8.E8.BE.B9" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信摇一摇周边</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E7.94.B3.E8.AF.B7.E5.BC.80.E9.80.9A.E6.91.87.E4.B8.80.E6.91.87.E5.91.A8.E8.BE.B9"><a href="http://mp.weixin.qq.com/wiki/19/9fe9fdbb50fee9f9660438c551142ccf.html">申请开通摇一摇周边</a></li>
+					<li id="n-.E8.AE.BE.E5.A4.87.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/15/095caa2f4a829f0299db617eaf6ad1cf.html">设备管理</a></li>
+					<li id="n-.E9.A1.B5.E9.9D.A2.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/15/7a21268ed234b4e648d86e3b91118907.html">页面管理</a></li>
+					<li id="n-.E7.B4.A0.E6.9D.90.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/12/3b10084ee944a702fd06e54a0f10b1d8.html">素材管理</a></li>
+					<li id="n-.E7.AE.A1.E7.90.86.E8.AE.BE.E5.A4.87.E4.B8.8E.E9.A1.B5.E9.9D.A2.E7.9A.84.E5.85.B3.E8.81.94.E5.85.B3.E7.B3.BB"><a href="http://mp.weixin.qq.com/wiki/6/0eb3f80f152d2edb95287141e7a6ab5e.html">管理设备与页面的关联关系</a></li>
+					<li id="n-.E8.8E.B7.E5.8F.96.E8.AE.BE.E5.A4.87.E5.8F.8A.E7.94.A8.E6.88.B7.E4.BF.A1.E6.81.AF"><a href="http://mp.weixin.qq.com/wiki/12/f18e741c4cab6652afe3878774672de4.html">获取设备及用户信息</a></li>
+					<li id="n-.E6.95.B0.E6.8D.AE.E7.BB.9F.E8.AE.A1"><a href="http://mp.weixin.qq.com/wiki/3/15da0147e3722fd689f363497af0c707.html">数据统计</a></li>
+					<li id="n-.E6.91.87.E4.B8.80.E6.91.87.E5.85.B3.E6.B3.A8JSAPI"><a href="http://mp.weixin.qq.com/wiki/4/94e3b1dc0416633a2d7f1cfaa71240c8.html">摇一摇关注JSAPI</a></li>
+					<li id="n-.E6.91.87.E4.B8.80.E6.91.87.E4.BA.8B.E4.BB.B6.E9.80.9A.E7.9F.A5"><a href="http://mp.weixin.qq.com/wiki/3/c71248e1b3efb158f258a48b72e67683.html">摇一摇事件通知</a></li>
+					<li id="n-.E6.91.87.E4.B8.80.E6.91.87.E7.BA.A2.E5.8C.85"><a href="http://mp.weixin.qq.com/wiki/7/0ddd50ed2421b99fedd071281c074aab.html">摇一摇红包</a></li>
+					<li id="n-Html-5.E9.A1.B5.E9.9D.A2.E8.8E.B7.E5.8F.96.E8.AE.BE.E5.A4.87.E4.BF.A1.E6.81.AF"><a href="http://mp.weixin.qq.com/wiki/11/c156a3e968b0c1e78157e15275dcc54b.html">Html 5页面获取设备信息</a></li>
+					<li id="n-.E6.91.87.E4.B8.80.E6.91.87.E5.91.A8.E8.BE.B9.E9.94.99.E8.AF.AF.E7.A0.81"><a href="http://mp.weixin.qq.com/wiki/1/8299371e6e11392757b23a6d1e592331.html">摇一摇周边错误码</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信摇一摇周边 -->
+
+<!-- 微信连Wi-Fi -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E8.BF.9EWi-Fi" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信连Wi-Fi</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E5.BE.AE.E4.BF.A1.E8.BF.9EWi-Fi.E5.BC.80.E5.8F.91.E8.80.85.E6.8C.87.E5.BC.95"><a href="http://mp.weixin.qq.com/wiki/9/fd2d692e28b938a8d618f57cf9c79fb1.html">微信连Wi-Fi开发者指引</a></li>
+					<li id="n-Wi-Fi.E7.A1.AC.E4.BB.B6.E9.89.B4.E6.9D.83.E5.8D.8F.E8.AE.AE.E6.8E.A5.E5.8F.A3.E8.AF.B4.E6.98.8E"><a href="http://mp.weixin.qq.com/wiki/10/0ef643c7147fdf689e0a780d8c08ab96.html">Wi-Fi硬件鉴权协议接口说明</a></li>
+					<li id="n-Wi-Fi.E8.BD.AF.E4.BB.B6.E6.9C.8D.E5.8A.A1.E7.AE.A1.E7.90.86.E6.8E.A5.E5.8F.A3.E8.AF.B4.E6.98.8E"><a href="http://mp.weixin.qq.com/wiki/14/70e147b2ace3247f88f1c2aaaa57568e.html">Wi-Fi软件服务管理接口说明</a></li>
+					<li id="n-.E5.BC.80.E9.80.9A.E5.BE.AE.E4.BF.A1.E8.BF.9EWi-Fi.E6.8F.92.E4.BB.B6"><a href="http://mp.weixin.qq.com/wiki/11/a6a3731b23ed4203f5d08030cd5bf4c3.html">开通微信连Wi-Fi插件</a></li>
+					<li id="n-Wi-Fi.E9.97.A8.E5.BA.97.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/9/0afbb08a0f06e87dd3669a2c1e19edd5.html">Wi-Fi门店管理</a></li>
+					<li id="n-Wi-Fi.E8.AE.BE.E5.A4.87.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/17/438e819a53e9426b202c3bc0afbad749.html">Wi-Fi设备管理</a></li>
+					<li id="n-.E9.85.8D.E7.BD.AE.E8.BF.9E.E7.BD.91.E6.96.B9.E5.BC.8F"><a href="http://mp.weixin.qq.com/wiki/17/22648869929525f829a3de1bfc73eb4d.html">配置连网方式</a></li>
+					<li id="n-.E5.95.86.E5.AE.B6.E4.B8.BB.E9.A1.B5.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/14/4e14adf8639aeb67d42df05cb792da9e.html">商家主页管理</a></li>
+					<li id="n-Wi-Fi.E6.95.B0.E6.8D.AE.E7.BB.9F.E8.AE.A1"><a href="http://mp.weixin.qq.com/wiki/11/f5f481aeeb62b9b0848315f78123b4d7.html">Wi-Fi数据统计</a></li>
+					<li id="n-.E8.BF.9E.E7.BD.91.E5.90.8E.E4.B8.8B.E5.8F.91.E6.B6.88.E6.81.AF"><a href="http://mp.weixin.qq.com/wiki/19/bac84e64da24f928c3e536c742d4e0b7.html">连网后下发消息</a></li>
+					<li id="n-Wi-Fi.E9.94.99.E8.AF.AF.E7.A0.81"><a href="http://mp.weixin.qq.com/wiki/9/b1211ca9404ec481f94e88d0dd344e85.html">Wi-Fi错误码</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信连Wi-Fi -->
+
+<!-- 微信扫一扫 -->
+<div class="portal" id="p-.E5.BE.AE.E4.BF.A1.E6.89.AB.E4.B8.80.E6.89.AB" style="margin-top: -1px;">
+	<h5><span class="portal_arrow"></span>微信扫一扫</h5>
+	<div class="body">
+				<ul>
+					<li id="n-.E6.89.AB.E4.B8.80.E6.89.AB.E6.8E.A5.E5.85.A5.E6.8C.87.E5.8D.97"><a href="http://mp.weixin.qq.com/wiki/19/e833eb10470cc25cad4719677c46ecdb.html">扫一扫接入指南</a></li>
+					<li id="n-.E5.95.86.E5.93.81.E5.88.9B.E5.BB.BA"><a href="http://mp.weixin.qq.com/wiki/6/c61604ff6890d386d6227945ad4a68d2.html">商品创建</a></li>
+					<li id="n-.E5.95.86.E5.93.81.E5.8F.91.E5.B8.83"><a href="http://mp.weixin.qq.com/wiki/15/1007691d0f1c10a0588c6517f12ed70f.html">商品发布</a></li>
+					<li id="n-.E5.95.86.E5.93.81.E7.AE.A1.E7.90.86"><a href="http://mp.weixin.qq.com/wiki/15/7fa787701295b884410b5163e13313af.html">商品管理</a></li>
+					<li id="n-.E6.89.AB.E4.B8.80.E6.89.AB.E4.BA.8B.E4.BB.B6.E6.8E.A8.E9.80.81"><a href="http://mp.weixin.qq.com/wiki/15/f4109a5e44b4bfbc7eb1337eb739f3e3.html">扫一扫事件推送</a></li>
+					<li id="n-.E9.94.99.E8.AF.AF.E7.A0.81"><a href="http://mp.weixin.qq.com/wiki/7/91dcb5ffa7d087a23299316c3c396e93.html">错误码</a></li>
+					<li id="n-.E5.9C.A8.E7.BA.BF.E5.B8.AE.E5.8A.A9.E5.B7.A5.E5.85.B7"><a href="http://mp.weixin.qq.com/wiki/11/9f75990a5e9f6c09c846fd918921e0d7.html">在线帮助工具</a></li>
+					<li id="n-.E6.89.AB.E4.B8.80.E6.89.AB.E5.B8.B8.E8.A7.81.E9.97.AE.E9.A2.98"><a href="http://mp.weixin.qq.com/wiki/15/b11cde45d1dcb23a94f493dd1e1320cb.html">扫一扫常见问题</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /微信扫一扫 -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+				</div>
+				<!-- /panel -->
+				<!-- content -->
+				<div id="content">
+					<!-- header -->
+					<div id="mw-head" class="noprint" style="visibility:hidden">
+						
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>个人工具</h5>
+	<ul>
+					<li id="pt-anonuserpage"><a href="http://mp.weixin.qq.com/wiki/0/f33145bff5a2445cabbd49fc12e8f2e0.html" title="您编辑本站所用IP的对应用户页 [.]" accesskey="." class="new">10.9.161.40</a></li>
+					<li id="pt-anontalk"><a href="http://mp.weixin.qq.com/wiki/12/4aa3e991f9670e48be3d9c6d01c4c568.html" title="对于来自此IP地址的编辑的对话 [n]" accesskey="n" class="new">该IP的讨论页</a></li>
+					<li id="pt-anonlogin"><a href="http://mp.weixin.qq.com/wiki/13/87a825589390bc96e0aadc2213281bc5.html" title="我们鼓励您登录，但这并不是必须的 [o]" accesskey="o">登录</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+						<div id="left-navigation">
+							
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>名字空间</h5>
+	<ul>
+					<li id="ca-nstab-main" class="selected"><span><a href="http://mp.weixin.qq.com/wiki/3/d205351634ce4513639316e381114043.html" title="查看页面内容 [c]" accesskey="c">页面</a></span></li>
+					<li id="ca-talk" class="new"><span><a href="http://mp.weixin.qq.com/wiki/home/#" title="关于页面正文的讨论 [t]" accesskey="t">讨论</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+		<h5><span>变换</span><a href="http://mp.weixin.qq.com/wiki/home/#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+						</div>
+						<div id="right-navigation">
+							
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>查看</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="http://mp.weixin.qq.com/wiki/3/d205351634ce4513639316e381114043.html">阅读</a></span></li>
+					<li id="ca-viewsource"><span><a href="http://mp.weixin.qq.com/wiki/home/#" title="此页面已被保护，你可以查看其源代码。 [e]" accesskey="e">查看源代码</a></span></li>
+					<li id="ca-history" class="collapsible "><span><a href="http://mp.weixin.qq.com/wiki/home/#" title="此页面的早前修订版本 [h]" accesskey="h">查看历史</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>动作</span><a href="http://mp.weixin.qq.com/wiki/home/#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">搜索</label></h5>
+	<form action="http://mp.weixin.qq.com/wiki/index.php" id="searchform">
+		<input type="hidden" name="title" value="特殊:搜索">
+				<input id="searchInput" name="search" type="text" title="搜索该网站 [f]" accesskey="f" value="">
+		<input type="submit" name="go" class="searchButton" id="searchGoButton" value="进入" title="如果相同的标题存在的话便直接前往该页面">
+		<input type="submit" name="fulltext" class="searchButton" id="mw-searchButton" value="搜索" title="搜索该文字的页面">
+			</form>
+</div>
+
+<!-- /2 -->
+						</div>
+					</div>
+					<!-- /header -->
+					<a id="top"></a>
+					<div id="mw-js-message" style="display:none;"></div>
+										<!-- firstHeading -->
+					<div class="content_hd">
+						<h2 id="firstHeading" class="">首页</h2>
+						<div class="info">
+							 
+						</div>
+					</div>
+					<!-- /firstHeading -->
+					<!-- bodyContent -->
+					<div id="bodyContent" class="bodyContent">
+						<!-- tagline -->
+						<div id="siteSub">出自微信公众平台开发者文档</div>
+						<!-- /tagline -->
+						<!-- subtitle -->
+						<div id="contentSub"></div>
+						<!-- /subtitle -->
+																								<!-- jumpto -->
+						<div id="jump-to-nav">
+							跳转到： <a href="http://mp.weixin.qq.com/wiki/home/#mw-head">导航</a>,
+							<a href="http://mp.weixin.qq.com/wiki/home/#p-search">搜索</a>
+						</div>
+						<!-- /jumpto -->
+												<!-- bodytext -->
+						<h3> <span class="mw-headline" id=".E5.BE.AE.E4.BF.A1.E5.85.AC.E4.BC.97.E5.B9.B3.E5.8F.B0.E5.BC.80.E5.8F.91.E6.A6.82.E8.BF.B0"><b>微信公众平台开发概述</b></span></h3>
+<p>微信公众平台是运营者通过公众号为微信用户提供资讯和服务的平台，而公众平台开发接口则是提供服务的基础，开发者在公众平台网站中创建公众号、获取接口权限后，可以通过阅读本接口文档来帮助开发。
+</p><p>为了识别用户，每个用户针对每个公众号会产生一个安全的OpenID，如果需要在多公众号、移动应用之间做用户共通，则需前往微信开放平台，将这些公众号和应用绑定到一个开放平台账号下，绑定后，一个用户虽然对多个公众号和应用有多个不同的OpenID，但他对所有这些同一开放平台账号下的公众号和应用，只有一个UnionID，可以在用户管理-获取用户基本信息（UnionID机制）文档了解详情。
+</p><p>请开发者注意：
+</p>
+<pre>1、微信公众平台开发是指为微信公众号进行业务开发，为移动应用、PC端网站、公众号第三方平台（为各行各业公众号运营者提供服务）的开发，请前往微信开放平台接入。
+2、在申请到认证公众号之前，你可以先通过测试号申请系统，快速申请一个接口测试号，立即开始接口测试开发。
+3、在开发过程中，可以使用接口调试工具来在线调试某些接口。
+4、每个接口都有每日接口调用频次限制，可以在公众平台官网-开发者中心处查看具体频次。
+5、在开发出现问题时，可以通过接口调用的返回码，以及报警排查指引（在公众平台官网-开发者中心处可以设置接口报警），来发现和解决问题。
+6、公众平台以access_token为接口调用凭据，来调用接口，所有接口的调用需要先获取access_token，access_token在2小时内有效，过期需要重新获取，但1天内获取次数有限，开发者需自行存储，详见获取接口调用凭据（access_token）文档。
+7、公众平台接口调用仅支持80端口。
+</pre>
+<p>公众号主要通过公众号消息会话和公众号内网页来为用户提供服务的，下面分别介绍这两种情况：
+</p><p><b>1、公众号消息会话</b>
+</p><p>公众号是以微信用户的一个联系人形式存在的，消息会话是公众号与用户交互的基础。目前公众号内主要有这样几类消息服务的类型，分别用于不同的场景。
+</p>
+<pre>1）群发消息：公众号可以以一定频次（订阅号为每天1次，服务号为每月4次），向用户群发消息，包括文字消息、图文消息、图片、视频、语音等。
+2）被动回复消息：在用户给公众号发消息后，微信服务器会将消息发到开发者预先在开发者中心设置的服务器地址（开发者需要进行消息真实性验证），公众号可以在5秒内做出回复，可以回复一个消息，也可以回复命令告诉微信服务器这条消息暂不回复。被动回复消息可以设置加密（在公众平台官网的开发者中心处设置，设置后，按照消息加解密文档来进行处理。其他3种消息的调用因为是API调用而不是对请求的返回，所以不需要加解密）。
+3）客服消息：在用户给公众号发消息后的48小时内，公众号可以给用户发送不限数量的消息，主要用于客服场景。用户的行为会触发事件推送，某些事件推送是支持公众号据此发送客服消息的，详见微信推送消息与事件说明文档。
+4）模板消息：在需要对用户发送服务通知（如刷卡提醒、服务预约成功通知等）时，公众号可以用特定内容模板，主动向用户发送消息。
+</pre>
+<p><b>2、公众号内网页</b>
+</p><p>许多复杂的业务场景，需要通过网页形式来提供服务，这时需要用到：
+</p>
+<pre>1）网页授权获取用户基本信息：通过该接口，可以获取用户的基本信息（获取用户的OpenID是无需用户同意的，获取用户的基本信息则需用户同意）
+2）微信JS-SDK：是开发者在网页上通过JavaScript代码使用微信原生功能的工具包，开发者可以使用它在网页上录制和播放微信语音、监听微信分享、上传手机本地图片、拍照等许多能力。
+</pre>
+<h3> <span class="mw-headline" id=".E5.85.B8.E5.9E.8B.E6.A1.88.E4.BE.8B.E4.BB.8B.E7.BB.8D"><b>典型案例介绍</b></span></h3>
+<p>值得借鉴的公众帐号主要是服务号，试列举并介绍如下：
+</p><p><b>招商银行信用卡中心</b>
+</p>
+<div class="center"><div class="floatnone"><a href="http://mp.weixin.qq.com/wiki/home/#" class="image"><img alt="招商银行.png" src="./微信公众平台开发者文档_files/a3bc99c16fbef2d3f9fada7fb05998ef.png" width="600" height="467"></a></div></div>
+<p>如果你是持卡人，可快捷查询信用卡账单、额度及积分；快速还款、申请账单分期；微信转接人工服务；信用卡消费，微信免费笔笔提醒。如果不是持卡人，可以微信办卡！
+</p>
+<pre>招商银行公众号通过提示消息引导用户将自己的微信号和信用卡号安全绑定。
+用户可以通过该公众号查询账单、收取刷卡通知等功能，这是由招行开发人员通过公众号接口实现的功能。
+</pre>
+<p><b>中国南方航空</b>
+</p>
+<div class="center"><div class="floatnone"><a href="http://mp.weixin.qq.com/wiki/home/#" class="image"><img alt="南方航空.png" src="./微信公众平台开发者文档_files/f0d5a72814de22e1ced9da097bfff4f6.png" width="600" height="465"></a></div></div>
+<p>你可以办理值机手续，挑选座位，查询航班信息，查询目的地城市天气，并为明珠会员提供专业的服务。
+</p>
+<pre>南方航空公众号可以让用户将明珠会员服务和微信号绑定起来。
+用户可以通过该公众号预订机票、查询订单，甚至办理登机牌。
+</pre>
+<p><b>广东联通</b>
+</p>
+<div class="center"><div class="floatnone"><a href="http://mp.weixin.qq.com/wiki/home/#" class="image"><img alt="广东联通.png" src="./微信公众平台开发者文档_files/8e6fe2802541c3b81521f60f74bd55d6.png" width="600" height="464"></a></div></div>
+<p>你可以在微信里绑定手机号、积分流量，套餐余量、手机上网流量，微信专属流量查询，客服咨询。
+</p>
+<pre>广东联通公众号可以绑定手机号，来查询流量、套餐等等功能。
+广东联通更与微信深度合作，购买微信沃卡可以获得微信五大特权。
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 6/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+<div class="printfooter">
+取自“<a href="http://mp.weixin.qq.com/wiki/3/d205351634ce4513639316e381114043.html">../3/d205351634ce4513639316e381114043.html</a>”</div>
+						<!-- /bodytext -->
+												<!-- catlinks -->
+						<div id="catlinks" class="catlinks catlinks-allhidden"></div>						<!-- /catlinks -->
+																		<div class="visualClear"></div>
+					</div>
+					<!-- /bodyContent -->
+				</div>
+				<!-- /content -->
+				
+			</div>
+		</div>
+		<!-- footer -->
+		<div class="foot" id="footer">
+			<ul class="links ft" id="footer-places">
+					<li class="links_item no_extra" id="footer-about"><a target="_blank" href="http://www.tencent.com/zh-cn/index.shtml">关于腾讯</a></li>
+					<li class="links_item" id="footer-policy"> <a target="_blank" href="http://mp.weixin.qq.com/wiki/home/#">服务协议</a></li>
+					<li class="links_item" id="footer-contactus"><a target="_blank" href="http://kf.qq.com/special_auto/weixin.html">客服中心</a></li>
+					<li class="links_item" id="footer-contactus"><a href="http://crm2.qq.com/page/portalpage/wpa.php?uin=40012345&amp;f=1&amp;ty=1&amp;ap=000011:400792:|f:Ggzpt1" target="_blank">在线客服</a></li>
+			</ul>
+			
+			<ul id="footer-icons" class="noprint">
+				<li id="footer-poweredbyico">
+					<a href="http://www.mediawiki.org/"><img src="./微信公众平台开发者文档_files/1360f2593ddc8c336d455df43678bb00.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+				</li>
+			</ul>
+			            <p class="copyright">Copyright&nbsp;© 2012-2016 Tencent. All Rights Reserved.</p>
+		</div>
+		<!-- /footer -->
+		
+<script src="./微信公众平台开发者文档_files/8de4f51dbc81a02504e69db45b414107.css"></script><script src="./微信公众平台开发者文档_files/load.php"></script>
+<script>if ( window.mediaWiki ) {
+	mediaWiki.config.set({"wgCanonicalNamespace": "", "wgCanonicalSpecialPageName": false, "wgNamespaceNumber": 0, "wgPageName": "首页", "wgTitle": "首页", "wgAction": "view", "wgArticleId": 1, "wgIsArticle": true, "wgUserName": null, "wgUserGroups": ["*"], "wgCurRevisionId": 2305, "wgCategories": [], "wgBreakFrames": false, "wgRestrictionEdit": [], "wgRestrictionMove": []});
+}
+</script>
+<script>if ( window.mediaWiki ) {
+	mediaWiki.loader.load(["mediawiki.util", "mediawiki.legacy.wikibits", "mediawiki.legacy.ajax"]);
+	mediaWiki.loader.go();
+}
+</script>
+
+<script>if ( window.mediaWiki ) {
+	mediaWiki.user.options.set({"ccmeonemails":0,"cols":80,"contextchars":50,"contextlines":5,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"highlightbroken":1,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+	"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"zh-cn","language":"zh-cn","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;mediaWiki.loader.state({"user.options":"ready"});
+}
+</script>		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		<!-- Served in 0.070 secs. -->				<script type="text/javascript">
+		// @cunjinli
+		setTimeout(function() {
+			$("#mw-panel .portal .body li a").each(function() {
+				var href = $(this).attr("href"),
+				    idx = href.lastIndexOf("/");
+				if (!/\.html$/.test(href)) return;
+
+				if (idx>=0) href = href.substr(idx+1);
+				var r = new RegExp(href+"$");
+				if (r.test(location.href)) {
+				    $(this).closest(".portal").find("h5").click();
+				    return false;
+				}
+			});
+		}, 100);
+		</script>
+	
+
+<!-- Welcome to ask gy-team --><!-- so --></body></html>
