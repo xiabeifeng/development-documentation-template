@@ -49,6 +49,45 @@ body {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
+#panel {
+	border-color: #d3d3d3;
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+	float: left;
+    font-size: 14px;
+    padding: 0 0 100px;
+    border-right: 1px solid #ECEDE8;
+    margin-right: -1px;
+}
+#panel .portal {
+	margin-top: -1px;
+}
+#panel .portal:first-child h5 {
+    border-top-width: 0;
+}
+#panel h5 {
+    height: 35px;
+    line-height: 35px;
+    margin: -1px 15px 0;
+    border: 1px solid #D9D9D9;
+    border-width: 1px 0;
+    font-size: 14px;
+    text-indent: 32px;
+    color: #333;
+    cursor: pointer;
+}
+#panel .portal .portal_arrow {
+	width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-left-color: #aaa;
+    display: inline-block;
+    margin-left: -12px;
+    font-size: 1px;
+    line-height: 0;
+}
 
 /* 底部样式 */
 #footer{
