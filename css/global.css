@@ -1,0 +1,24 @@
+body,div,a,img {
+	padding: 0;
+	margin: 0;
+}
+#header {
+	width: 100%;
+}
+#headerTop {
+	border-top: 4px solid #67AD03;
+    border-bottom: 1px solid #c3c3c3;
+	background-color: #f3f3f3;
+}
+#logoBox {
+	width: 80%;
+	height: 60px;
+	margin-left: auto;
+    margin-right: auto;
+}
+#logoBox a {
+	display: inline-block;
+    margin-top: 8px;
+	color: #c9c9c9;
+    text-decoration: none;
+}
