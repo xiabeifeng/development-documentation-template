@@ -1,17 +1,24 @@
+/* 基础样式 */
 body,div,a,img {
 	padding: 0;
 	margin: 0;
 }
+body {
+	font-family: "Microsoft Yahei","宋体","Tahoma",Arial;
+}
+
+/* 头部样式 */
 #header {
 	width: 100%;
 }
 #headerTop {
-	border-top: 4px solid #67AD03;
-    border-bottom: 1px solid #c3c3c3;
 	background-color: #f3f3f3;
+	-webkit-box-shadow: 0 2px 3px rgba(0,0,0,0.15),inset 0 -1px 0 0 #fcfcfc;
+	border-top: 4px solid #67AD03;
+	border-bottom: 1px solid #c3c3c3;
 }
 #logoBox {
-	width: 80%;
+	width: 1000px;
 	height: 60px;
 	margin-left: auto;
     margin-right: auto;
@@ -22,3 +29,26 @@ body,div,a,img {
 	color: #c9c9c9;
     text-decoration: none;
 }
+
+/* 主体内容样式 */
+#main {
+	width: 1000px;
+    margin: 35px 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+#inner {
+	position: relative;
+    min-height: 730px;
+    overflow: hidden;
+    border: 1px solid #d3d3d3;
+    background-color: #f3f3f3;
+    box-shadow: 0 2px 2px 0 #e3e3e3;
+    -moz-box-shadow: 0 2px 2px 0 #e3e3e3;
+    -webkit-box-shadow: 0 2px 2px 0 #e3e3e3;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+/* 底部样式 */
