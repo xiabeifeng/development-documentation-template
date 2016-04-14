@@ -1,51 +1,51 @@
 <!doctype html>
 <html lang="zh-cn">
 <head>
-	<script type="text/javascript" src="./js/jquery-1.12.2.min.js"></script>
-	<script type="text/javascript">
-		// 页面初始化
-		$.getJSON("./config/config.json", function(data){
-			$('title').html(data.title);
-			$('#favicon').attr('href', './image/'+data.favicon);
-			$('#headerTop').css('border-top', data.border_top_style);
-			$('#logoBox').find('img').attr('src', './image/'+data.logo);
-			$('#logoBox').find('img').attr('alt', data.title);
-			$('#footer').find('p').html(data.copyright);
-		}); 
-	</script>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link id="favicon" rel="shortcut icon" href="" />
-	<link rel="stylesheet" type="text/css" href="./css/global.css" />
-	<title></title>
+    <script type="text/javascript" src="./js/jquery-1.12.2.min.js"></script>
+    <script type="text/javascript">
+        // 页面初始化
+	    $.getJSON("./config/config.json", function(data){
+	        $('title').html(data.title);
+	        $('#favicon').attr('href', './image/'+data.favicon);
+		$('#headerTop').css('border-top', data.border_top_style);
+		$('#logoBox').find('img').attr('src', './image/'+data.logo);
+		$('#logoBox').find('img').attr('alt', data.title);
+		$('#footer').find('p').html(data.copyright);
+	    }); 
+    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link id="favicon" rel="shortcut icon" href="" />
+    <link rel="stylesheet" type="text/css" href="./css/global.css" />
+    <title></title>
 </head>
 <body>
-	<!-- 头部 -->
-	<div id="header">
-		<div id="headerTop">
-			<div id="logoBox">
-				<a href=""><img src="" alt=" " /></a>
-			</div>
-		</div>
-	</div>
-	<!-- /头部 -->
+    <!-- 头部 -->
+    <div id="header">
+        <div id="headerTop">
+	    <div id="logoBox">
+	        <a href=""><img src="" alt=" " /></a>
+            </div>
+        </div>
+    </div>
+    <!-- /头部 -->
 	
-	<!-- 主体内容 -->
-	<div id="main">
-		<div id="inner">
-			<div id="panel">
-				<div class="portal">
-					<h5><span class="portal_arrow"></span>开始前必读</h5>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /主体内容 -->
+    <!-- 主体内容 -->
+    <div id="main">
+        <div id="inner">
+            <div id="panel">
+            	<div class="portal">
+                    <h5><span class="portal_arrow"></span>开始前必读</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /主体内容 -->
 	
-	<!-- 底部 -->
-	<div id="footer">
-		<p>Copyright © 2012-2016 Tencent. All Rights Reserved.</p>
-	</div>
-	<!-- /底部 -->
+    <!-- 底部 -->
+    <div id="footer">
+        <p>Copyright © 2012-2016 Tencent. All Rights Reserved.</p>
+    </div>
+    <!-- /底部 -->
 	
 </body>
 </html>
