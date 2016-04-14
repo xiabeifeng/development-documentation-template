@@ -1,7 +1,7 @@
 {
-	"title": "软件项目开发文档",
-	"favicon": "favicon.ico",
-	"border_top_style": "4px solid #67AD03",
-	"logo": "logo.png",
-	"copyright": "Copyright © 2012-2016 Tencent. All Rights Reserved."
+    "title": "软件项目开发文档",
+    "favicon": "favicon.ico",
+    "border_top_style": "4px solid #67AD03",
+    "logo": "logo.png",
+    "copyright": "Copyright © 2012-2016 Tencent. All Rights Reserved."
 }
