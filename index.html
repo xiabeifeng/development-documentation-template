@@ -7,8 +7,10 @@
 		$.getJSON("./config/config.json", function(data){
 			$('title').html(data.title);
 			$('#favicon').attr('href', './image/'+data.favicon);
+			$('#headerTop').css('border-top', data.top_border_color);
 			$('#logoBox').find('img').attr('src', './image/'+data.logo);
 			$('#logoBox').find('img').attr('alt', data.title);
+			$('#footer').find('p').html(data.copyright);
 		}); 
 	</script>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -17,7 +19,7 @@
 	<title></title>
 </head>
 <body>
-
+	<!-- 头部 -->
 	<div id="header">
 		<div id="headerTop">
 			<div id="logoBox">
@@ -25,12 +27,21 @@
 			</div>
 		</div>
 	</div>
+	<!-- /头部 -->
 	
+	<!-- 主体内容 -->
 	<div id="main">
 		<div id="inner">
 			
 		</div>
 	</div>
+	<!-- /主体内容 -->
+	
+	<!-- 底部 -->
+	<div id="footer">
+		<p>Copyright © 2012-2016 Tencent. All Rights Reserved.</p>
+	</div>
+	<!-- /底部 -->
 	
 </body>
 </html>

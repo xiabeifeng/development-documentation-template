@@ -1,5 +1,5 @@
 /* 基础样式 */
-body,div,a,img {
+body,div,a,img,p {
 	padding: 0;
 	margin: 0;
 }
@@ -14,7 +14,6 @@ body {
 #headerTop {
 	background-color: #f3f3f3;
 	-webkit-box-shadow: 0 2px 3px rgba(0,0,0,0.15),inset 0 -1px 0 0 #fcfcfc;
-	border-top: 4px solid #67AD03;
 	border-bottom: 1px solid #c3c3c3;
 }
 #logoBox {
@@ -52,3 +51,10 @@ body {
 }
 
 /* 底部样式 */
+#footer{
+	padding: 24px 0;
+    color: #dadada;
+    font-size: 14px;
+    text-align: center;
+    background-color: #727171;	
+}
