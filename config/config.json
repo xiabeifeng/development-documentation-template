@@ -1,4 +1,5 @@
 {
-	"title" : "Development documentation template",
-	"favicon" : "favicon.ico"
+	"title": "软件项目开发文档",
+	"favicon": "favicon.ico",
+	"logo": "logo.png"
 }
