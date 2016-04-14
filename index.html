@@ -7,7 +7,7 @@
 		$.getJSON("./config/config.json", function(data){
 			$('title').html(data.title);
 			$('#favicon').attr('href', './image/'+data.favicon);
-			$('#headerTop').css('border-top', data.top_border_color);
+			$('#headerTop').css('border-top', data.border_top_style);
 			$('#logoBox').find('img').attr('src', './image/'+data.logo);
 			$('#logoBox').find('img').attr('alt', data.title);
 			$('#footer').find('p').html(data.copyright);
