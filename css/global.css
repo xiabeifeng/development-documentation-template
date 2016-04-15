@@ -27,6 +27,7 @@ body {
     margin-top: 8px;
     color: #c9c9c9;
     text-decoration: none;
+    outline: none;
 }
 
 /* 主体内容样式 */
@@ -97,12 +98,14 @@ body {
     line-height: 30px;
     font-size: 12px;
     border-radius: 3px;
+    outline: none;
 }
 #panel a {
     color: #333;
     display: block;
     text-indent: 32px;
     text-decoration: none;
+    outline: none;
 }
 #content {
     background-color: #ffffff;
@@ -175,6 +178,7 @@ body {
 .content_body a:hover {
     color: #2255AA;
     text-decoration: underline;
+    outline: none;
 }
 pre {
     font: 12px "MicroSoft YaHei","Courier New","Andale Mono",monospace;
