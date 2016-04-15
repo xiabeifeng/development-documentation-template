@@ -8,7 +8,7 @@ $(function(){
         $('#logoBox').find('img').attr('src', './image/'+data.logo);
         $('#logoBox').find('img').attr('alt', data.title);
         $('#footer').find('p').html(data.copyright);
-        subnav_clicked_color = data.subnav_clicked_color
+        subnav_clicked_color = data.subnav_clicked_color;
     });
     
     // 页面主题内容初始化
@@ -33,9 +33,9 @@ $(function(){
     	var url = $(this).attr('value');
     	var title = $(this).html();
         $.get(url, function(result){
-        	md_content = result;
-        	html_content = markdown.toHTML(md_content);
-        	$('.content_head').find('h2').html(title);
+            md_content = result;
+            html_content = markdown.toHTML(md_content);
+            $('.content_head').find('h2').html(title);
             $("#content_body").html(html_content);
         });
         return false;
