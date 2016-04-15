@@ -3,5 +3,6 @@
     "favicon": "favicon.ico",
     "border_top_style": "4px solid #67AD03",
     "logo": "logo.png",
+    "subnav_clicked_color": "maroon",
     "copyright": "Copyright © 2012-2016 Tencent. All Rights Reserved."
 }
