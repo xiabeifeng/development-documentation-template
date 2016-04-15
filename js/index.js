@@ -1,6 +1,6 @@
 $(function(){
     // 页面基础数据初始化
-	var subnav_clicked_color;
+    var subnav_clicked_color;
     $.getJSON("./config/config.json", function(data){
         $('title').html(data.title);
         $('#favicon').attr('href', './image/'+data.favicon);
