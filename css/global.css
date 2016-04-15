@@ -6,7 +6,6 @@ body, div, a, img, p {
 body {
     font-family: "Microsoft Yahei", "宋体", "Tahoma", Arial;
 }
-
 /* 头部样式 */
 #header {
     width: 100%;
@@ -50,7 +49,6 @@ body {
     -webkit-border-radius: 3px;
 }
 #panel {
-    border-color: #d3d3d3;
     position: absolute;
     top: 0;
     left: 0;
@@ -58,7 +56,7 @@ body {
     float: left;
     font-size: 14px;
     padding: 0 0 100px;
-    border-right: 1px solid #ECEDE8;
+    border-right: 1px solid #d3d3d3;
     margin-right: -1px;
 }
 #panel .portal {
@@ -87,6 +85,17 @@ body {
     margin-left: -12px;
     font-size: 1px;
     line-height: 0;
+}
+#content {
+    background-color: #ffffff;
+    border-color: #d3d3d3;
+    float: none;
+    width: auto;
+    min-height: 730px;
+    margin-left: 250px;
+    border-left: 1px solid #d3d3d3;
+    padding: 0;
+    padding-bottom: 100px;
 }
 
 /* 底部样式 */
