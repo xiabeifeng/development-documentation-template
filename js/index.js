@@ -12,7 +12,7 @@ $(function(){
     });
     
     // 页面主题内容初始化
-    $.get("./html/update.md", function(result){
+    $.get("./html/register.md", function(result){
     	md_content = result;
     	html_content = markdown.toHTML(md_content);
         $("#content_body").html(html_content);
