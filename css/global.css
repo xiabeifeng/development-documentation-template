@@ -18,13 +18,14 @@ body {
 }
 #logoBox {
     width: 1000px;
-    height: 60px; margin-left : auto;
+    height: 67px; 
+    margin-left : auto;
     margin-right: auto;
     margin-left: auto;
 }
 #logoBox a {
     display: inline-block;
-    margin-top: 8px;
+    margin-top: 5px;
     color: #c9c9c9;
     text-decoration: none;
     outline: none;
@@ -180,7 +181,7 @@ body {
     text-decoration: underline;
     outline: none;
 }
-pre {
+.content_body pre {
     font: 12px "MicroSoft YaHei","Courier New","Andale Mono",monospace;
     padding: 5px 10px;
     border: 1px solid #ccc;
@@ -194,6 +195,9 @@ pre {
     word-wrap: break-word;
     border-radius: 3px;
     margin-left: 10px;
+}
+.content_body pre code{
+    font: 12px "MicroSoft YaHei","Courier New","Andale Mono",monospace;
 }
 
 /* 底部样式 */

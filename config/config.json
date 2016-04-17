@@ -1,8 +1,8 @@
 {
-    "title": "软件项目开发文档",
+    "title": "紫蜂科技 | 客户端开发文档",
     "favicon": "favicon.ico",
-    "border_top_style": "4px solid #67AD03",
+    "border_top_style": "4px solid #084C9A",
     "logo": "logo.png",
-    "subnav_clicked_color": "maroon",
-    "copyright": "Copyright © 2012-2016 Tencent. All Rights Reserved."
+    "subnav_clicked_color": "#036FE5",
+    "copyright": "Copyright © 2016 PurpleBee. All Rights Reserved."
 }
