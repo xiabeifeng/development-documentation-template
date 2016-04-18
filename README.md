@@ -29,3 +29,6 @@ index.html                  // 首页(主入口文件)
 
 ### License
 The MIT License (MIT). Please see License File for more information.
+
+### 效果图
+![Aaron Swartz](https://raw.githubusercontent.com/xiabeifeng/development-documentation-template/master/效果图/snapshot1.png)
